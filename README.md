@@ -1,2 +1,4 @@
-# ra2581392323019
-Repositório do aluno ANA JULIA TETTE LOPES AFONSO.
+# Portifólio de Projetos - Fatec Jacareí
+### Aluno: Ana Júlia tette Lopes Afonso
+### Curso: Desenvolvimento de Software Multiplataforma
+### Turma: 2° Semestre de 2023

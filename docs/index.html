@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Julia Tette Lopes Afonso | Portfólio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="foto-perfil">
+                <img src="./assets/Image.jpeg" alt="Foto de Ana Julia">
+            </div>
+            <div class="texto-header">
+                <h1>Ana Julia Tette Lopes Afonso</h1>
+                <p>Desenvolvedora | Aluna de Desenvolvimento de Software Multiplataforma na FATEC Jacareí</p>
+                <nav>
+                    <a href="#projetos">Projetos</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section class="sobre">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <p>Sou estudante de Desenvolvimento de Software Multiplataforma na FATEC Jacareí. Apaixonada por tecnologia,
+                desenvolvimento e aprendizado constante. Tenho desenvolvido projetos acadêmicos que demonstram minha
+                evolução e interesse pela área.</p>
+        </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <h2>Projetos Acadêmicos</h2>
+            <div class="grid-projetos">
+                <div class="card">
+                    <h3>Aplicação curso Scrum</h3>
+                    <img src="./assets/teste.gif" alt="Gif do projeto"
+                        style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+                    <p>Consiste na criação de uma plataforma de curso simples para o aprendizado do SCRUM. Tecnologias
+                        usadas: HTML, CSS, JavaScript.</p>
+                    <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
+                    <div class="accordion-conteudo">
+                        <p>Participei da construção das funcionalidades no frontend com HTML e JavaScript, cuidando tanto da
+                            lógica quanto do design responsivo.</p>
+                    </div>
+                    <a href="https://github.com/Team-The-Code/API-1DSM-2023" target="_blank">Ver Projeto</a>
+                </div>
+
+                <div class="card">
+                    <h3>Projetos de mapeamento</h3>
+                    <img src="./assets/visiona.gif" alt="Gif do projeto"
+                        style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+                    <p>Consiste em um sistema web, para manipulação de projetos de mapeamento. Tecnologias usadas:
+                        React, Node.js, PostgreSQL, Typescript.</p>
+                    <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
+                    <div class="accordion-conteudo">
+                        <p>Participei da construção das rotas do backend em Node.js, modelagem do banco de dados
+                            PostgreSQL, além de implementar funcionalidades no frontend em React, cuidando tanto da
+                            lógica quanto do design responsivo.</p>
+                    </div>
+                    <a href="https://github.com/Team-The-Code/API-2DSM-2024" target="_blank">Ver Projeto</a>
+                </div>
+
+                <div class="card">
+                    <h3>Pequenos Sabores</h3>
+                    <img src="./assets/pequenos.gif" alt="Gif do projeto"
+                        style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+                    <p>Uma aplicação para registro e monitoramento da ingestão diária de calorias e nutrientes por
+                        crianças. Tecnologias usadas: Typescript, React, MongoDB.</p>
+                    <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
+                    <div class="accordion-conteudo">
+                        <p> Minha contribuição envolveu a implementação de funcionalidades em React, garantindo uma experiência de usuário intuitiva e responsiva, além de cuidar da lógica da aplicação e do design visual para apoiar o controle alimentar e a promoção da saúde</p>
+                    </div>
+                    <a href="https://github.com/4TechForce/ABP-3DSM-2024" target="_blank">Ver Projeto</a>
+                </div>
+                <div class="card">
+                    <h3>AquaTrace</h3>
+                    <img src="./assets/boia.gif" alt="Gif do projeto"
+                        style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+                </br>
+                    <p>Solução IoT para rastreamento de derivadores oceanográficos, com GPS e monitoramento em tempo
+                        real . Tecnologias usadas: ReactNative, PostgreSQL.</p>
+                    <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
+                    <div class="accordion-conteudo">
+                        <p>Atuei no desenvolvimento do frontend de uma aplicação mobile IoT para rastreamento de derivadores oceanográficos, com GPS e monitoramento em tempo real. Fui responsável por criar interfaces intuitivas e responsivas usando React Native, garantindo a integração eficiente com os serviços de backend e APIs para atualização em tempo real dos dados.</p>
+                    </div>
+                    <a href="https://github.com/FPbueno/DSG_4_ABP" target="_blank">Ver Projeto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Me envie uma mensagem ou acesse meus links abaixo:</p>
+            <div class="links">
+                <a href="mailto:ana_tette@outlook.com" target="_blank">Email</a>
+                <a href="https://github.com/AnaBarbancho" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ana Julia Tette Lopes Afonso. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleAccordion(button) {
+            const allContents = document.querySelectorAll('.accordion-conteudo');
+            const allButtons = document.querySelectorAll('.btn-accordion');
+            const content = button.nextElementSibling;
+
+            allContents.forEach(c => {
+                if (c !== content) {
+                    c.classList.remove('active');
+                }
+            });
+            allButtons.forEach(b => {
+                if (b !== button) {
+                    b.classList.remove('active');
+                }
+            });
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                button.classList.remove('active');
+            } else {
+                content.classList.add('active');
+                button.classList.add('active');
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>
