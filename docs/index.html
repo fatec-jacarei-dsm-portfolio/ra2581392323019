@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -347,6 +347,7 @@ header::after {
 
 .carrossel {
     display: flex;
+    align-items: flex-start;
     gap: 30px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -373,6 +374,16 @@ text-align: center;
 position: relative;
 flex: 0 0 auto;
 margin: 0 10px; /* Espaçamento entre cards */
+border: 1px solid rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(8px);
+height: 460px;
+display: flex;
+flex-direction: column;
+}
+
+.carrossel-card:hover {
+transform: translateY(-6px);
+box-shadow: 0 18px 38px rgba(255, 77, 141, 0.18);
 }
 
 .carrossel-card img {
@@ -398,9 +409,39 @@ color: var(--cor-secundaria);
 margin-bottom: 15px; /* Reduzido de 20px */
 }
 
+.texto-card {
+    position: relative;
+    height: 125px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.texto-card p {
+    margin: 0;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.texto-card .texto-contribuicao {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+}
+
+.carrossel-card.modo-contribuicao .texto-original {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.carrossel-card.modo-contribuicao .texto-contribuicao {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .btn-accordion {
-    background: var(--cor-fundo);
+    background: rgba(255, 77, 141, 0.1);
     border: none;
     padding: 8px 12px;
     font-size: 0.8rem;
@@ -421,22 +462,9 @@ margin-bottom: 15px; /* Reduzido de 20px */
     box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
 }
 
-.accordion-conteudo {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.accordion-conteudo p {
-    margin-top: 10px;
-    color: var(--cor-secundaria);
-    font-size: 0.9rem;
-    line-height: 1.7;
-}
-
 .carrossel-card a {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: auto;
     color: white;
     background: var(--degrade-primario);
     padding: 6px 15px;
@@ -446,6 +474,8 @@ margin-bottom: 15px; /* Reduzido de 20px */
     transition: var(--transicao-rapida);
     box-shadow: 0 3px 10px rgba(255, 77, 141, 0.3);
     font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
 }
 
 
@@ -453,6 +483,7 @@ margin-bottom: 15px; /* Reduzido de 20px */
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(255, 77, 141, 0.4);
 }
+
 
 .carrossel-navegacao {
     display: flex;
@@ -514,6 +545,22 @@ margin-bottom: 15px; /* Reduzido de 20px */
     background-color: var(--cor-fundo);
     padding: 100px 20px;
     position: relative;
+    overflow: hidden;
+}
+
+.projetos-pessoais::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(230, 230, 230, 0.95) 0%, rgba(230, 230, 230, 0.65) 38%, rgba(230, 230, 230, 0.95) 100%),
+        url('./assets/nova.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.28;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .projetos-pessoais h2 {
@@ -539,20 +586,24 @@ margin-bottom: 15px; /* Reduzido de 20px */
 
 .grid-projetos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .card {
-    background: var(--cor-clara);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: var(--borda-arredondada);
     overflow: hidden;
     box-shadow: var(--sombra);
     transition: var(--transicao-rapida);
     text-align: center;
     padding-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(4px);
 }
 
 .card:hover {
@@ -843,49 +894,46 @@ footer p {
                     <div class="carrossel-card">
                         <img src="./assets/visiona.gif" alt="Projeto de mapeamento">
                         <h3>Projetos de mapeamento</h3>
-                        <p>Consiste em um sistema web para manipulação de projetos de mapeamento. Tecnologias usadas: React, Node.js, PostgreSQL, Typescript.</p>
-                        <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
-                        <div class="accordion-conteudo">
-                            <p>Participei da construção das rotas do backend em Node.js, modelagem do banco de dados PostgreSQL, além de implementar funcionalidades no frontend em React, cuidando tanto da lógica quanto do design responsivo.</p>
-                        </div>
+                        <div class="texto-card"><p class="texto-original">Consiste em um sistema web para manipula��o de projetos de mapeamento. Tecnologias usadas: React, Node.js, PostgreSQL, Typescript.</p><p class="texto-contribuicao">Participei da constru��o das rotas do backend em Node.js, modelagem do banco de dados PostgreSQL, al�m de implementar funcionalidades no frontend em React, cuidando tanto da l�gica quanto do design responsivo.</p></div><button class="btn-accordion">Ver minha contribui��o</button>
                         <a href="https://github.com/Team-The-Code/API-2DSM-2024" target="_blank">Ver Projeto</a>
                     </div>
 
                     <div class="carrossel-card">
                         <img src="./assets/pequenos.gif" alt="Pequenos Sabores">
                         <h3>Pequenos Sabores</h3>
-                        <p>Uma aplicação para registro e monitoramento da ingestão diária de calorias e nutrientes por crianças. Tecnologias usadas: Typescript, React, MongoDB.</p>
-                        <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
-                        <div class="accordion-conteudo">
-                            <p>Minha contribuição envolveu a implementação de funcionalidades em React, garantindo uma experiência de usuário intuitiva e responsiva, além de cuidar da lógica da aplicação e do design visual para apoiar o controle alimentar e a promoção da saúde.</p>
-                        </div>
+                        <div class="texto-card"><p class="texto-original">Uma aplica��o para registro e monitoramento da ingest�o di�ria de calorias e nutrientes por crian�as. Tecnologias usadas: Typescript, React, MongoDB.</p><p class="texto-contribuicao">Minha contribui��o envolveu a implementa��o de funcionalidades em React, garantindo uma experi�ncia de usu�rio intuitiva e responsiva, al�m de cuidar da l�gica da aplica��o e do design visual para apoiar o controle alimentar e a promo��o da sa�de.</p></div><button class="btn-accordion">Ver minha contribui��o</button>
                         <a href="https://github.com/4TechForce/ABP-3DSM-2024" target="_blank">Ver Projeto</a>
                     </div>
-                    
+
                     <div class="carrossel-card">
                         <img src="./assets/boia.gif" alt="AquaTrace">
                         <h3>AquaTrace</h3>
-                        <p>Solução IoT para rastreamento de derivadores oceanográficos, com GPS e monitoramento em tempo real. Tecnologias usadas: ReactNative, PostgreSQL.</p>
-                        <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
-                        <div class="accordion-conteudo">
-                            <p>Atuei no desenvolvimento do frontend de uma aplicação mobile IoT para rastreamento de derivadores oceanográficos, com GPS e monitoramento em tempo real. Fui responsável por criar interfaces intuitivas e responsivas usando React Native.</p>
-                        </div>
+                        <div class="texto-card"><p class="texto-original">Solu��o IoT para rastreamento de derivadores oceanogr�ficos, com GPS e monitoramento em tempo real. Tecnologias usadas: ReactNative, PostgreSQL.</p><p class="texto-contribuicao">Atuei no desenvolvimento do frontend de uma aplica��o mobile IoT para rastreamento de derivadores oceanogr�ficos, com GPS e monitoramento em tempo real. Fui respons�vel por criar interfaces intuitivas e responsivas usando React Native.</p></div><button class="btn-accordion">Ver minha contribui��o</button>
                         <a href="https://github.com/FPbueno/DSG_4_ABP" target="_blank">Ver Projeto</a>
                     </div>
-                    
+
                     <div class="carrossel-card">
-                        <img src="./assets/teste.gif" alt="Aplicação curso Scrum">
-                        <h3>Aplicação curso Scrum</h3>
-                        <p>Consiste na criação de uma plataforma de curso simples para o aprendizado do SCRUM. Tecnologias usadas: HTML, CSS, JavaScript.</p>
-                        <button class="btn-accordion" onclick="toggleAccordion(this)">Minha Contribuição</button>
-                        <div class="accordion-conteudo">
-                            <p>Participei da construção das funcionalidades no frontend com HTML e JavaScript, cuidando tanto da lógica quanto do design responsivo.</p>
-                        </div>
+                        <img src="./assets/teste.gif" alt="Aplica��o curso Scrum">
+                        <h3>Aplica��o curso Scrum</h3>
+                        <div class="texto-card"><p class="texto-original">Consiste na cria��o de uma plataforma de curso simples para o aprendizado do SCRUM. Tecnologias usadas: HTML, CSS, JavaScript.</p><p class="texto-contribuicao">Participei da constru��o das funcionalidades no frontend com HTML e JavaScript, cuidando tanto da l�gica quanto do design responsivo.</p></div><button class="btn-accordion">Ver minha contribui��o</button>
                         <a href="https://github.com/Team-The-Code/API-1DSM-2023" target="_blank">Ver Projeto</a>
                     </div>
+
+                    <div class="carrossel-card">
+                        <img src="./assets/whatsapp.jpeg" alt="WorkaFlow">
+                        <h3>WorkaFlow</h3>
+                        <div class="texto-card"><p class="texto-original">Plataforma de solicita��o de servi�os residenciais que conecta clientes e prestadores em um fluxo simples, eficiente e confi�vel, com foco em experi�ncia digital.</p><p class="texto-contribuicao">Contribui��o principal no frontend, com organiza��o das telas e refinamento da experi�ncia de navega��o para tornar a jornada do usu�rio mais clara, fluida e profissional.</p></div><button class="btn-accordion">Ver minha contribui��o</button>
+                        <a href="https://github.com/FPbueno/DSG_5" target="_blank">Ver Projeto</a>
+                    </div>
+
+                    <div class="carrossel-card">
+                        <img src="./assets/chatbot.jpeg" alt="Chatbot Procon">
+                        <h3>Chatbot Procon</h3>
+                        <div class="texto-card"><p class="texto-original">Chatbot em TypeScript para atendimento do Procon de Jacare�/SP via WhatsApp, com orienta��o ao consumidor, agendamentos e apoio � gest�o por dados.</p><p class="texto-contribuicao">Atua��o focada em testes, validando fluxos de conversa, regras de agendamento e consist�ncia das respostas para garantir confiabilidade no atendimento.</p></div><button class="btn-accordion">Ver minha contribui��o</button>
+                        <a href="https://github.com/Isaac-Souza-Santos/abp_6" target="_blank">Ver Projeto</a>
+                    </div>
                 </div>
-                <button class="carrossel-seta direita" onclick="moverCarrossel(1)">❯</button>
-                <div class="carrossel-navegacao" id="carrossel-navegacao">
+                <button class="carrossel-seta direita" onclick="moverCarrossel(1)">❯</button>`r`n                <div class="carrossel-navegacao" id="carrossel-navegacao">
                     <!-- Os botões de navegação serão gerados pelo JavaScript -->
                 </div>
             </div>
@@ -912,6 +960,20 @@ footer p {
                         Esta tarefa foi desenvolvida como tarefa em sala de aula.
                     </p>
                     <a href="https://github.com/AnaBarbancho/atividade_desenvolvimento.git" style="pointer-events: none; background: var(--cor-secundaria);">Acesse Aqui</a>
+                </div>
+
+                <div class="card">
+                    <img src="./assets/Capturar.PNG" alt="Controle Remoto">
+                    <h3>Controle Remoto</h3>
+                    <p>Projeto de controle remoto para TV desenvolvido em JavaScript, com foco em interação simples, direta e funcional.</p>
+                    <a href="https://github.com/AnaBarbancho/controle_remoto" target="_blank">Acesse aqui</a>
+                </div>
+
+                <div class="card">
+                    <img src="./assets/otica.PNG" alt="Gerenciamento de clínica optometrista">
+                    <h3>Gerenciamento de clínica optometrista</h3>
+                    <p>Sistema para gerenciamento de atendimentos optométricos, organizado para apoiar o fluxo de atendimento e o controle de informações da clínica.</p>
+                    <a href="https://github.com/AnaBarbancho/oticas-sistema" target="_blank">Acesse aqui</a>
                 </div>
             </div>
         </div>
@@ -961,30 +1023,13 @@ footer p {
             container.appendChild(span);
         });
 
-        // Accordion
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            const isOpen = content.style.maxHeight;
-
-            // Fecha todos os accordions primeiro
-            document.querySelectorAll('.accordion-conteudo').forEach(acc => {
-                if (acc !== content) {
-                    acc.style.maxHeight = null;
-                    acc.previousElementSibling.style.background = 'var(--cor-fundo)';
-                    acc.previousElementSibling.style.color = 'var(--cor-primaria)';
-                }
+        document.querySelectorAll('.btn-accordion').forEach((botao) => {
+            botao.addEventListener('click', () => {
+                const card = botao.closest('.carrossel-card');
+                const ativo = card.classList.toggle('modo-contribuicao');
+                botao.textContent = ativo ? 'Voltar ao resumo' : 'Ver minha contribuição';
             });
-
-            if (isOpen && isOpen !== "0px") {
-                content.style.maxHeight = null;
-                button.style.background = 'var(--cor-fundo)';
-                button.style.color = 'var(--cor-primaria)';
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                button.style.background = 'var(--cor-primaria)';
-                button.style.color = 'white';
-            }
-        }
+        });
 
         // Efeito de digitação para o subtítulo
         const subtitulo = document.getElementById('subtitulo');
@@ -1082,3 +1127,7 @@ footer p {
 </body>
 
 </html>
+
+
+
+
