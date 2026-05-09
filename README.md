@@ -1,4 +1,4 @@
 
-### Aluno: Ana Júlia tette Lopes Afonso
+### Aluno: Ana Júlia Tette Afonso Barbancho
 ### Curso: Desenvolvimento de Software Multiplataforma
-### Turma: 2° Semestre de 2023
+### Turma: 6° Semestre de 2026
