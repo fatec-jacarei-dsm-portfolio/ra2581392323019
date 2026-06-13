@@ -15,4 +15,4 @@
 **Vídeos de Apresentação**
 
 🎤 4DSM - [Vídeo](https://youtu.be/BdsxxvtUv74?si=JM5a_WeX2vjMVaLi)  
-🎤 6DSM - [Vídeo](LINK_VIDEO_6DSM)
+🎤 6DSM - [Vídeo](https://youtu.be/dYpck4GMrdY)
